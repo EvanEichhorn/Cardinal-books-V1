@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cardinal Books - Your Ball State Family Bookstore</title>
+    <style>
+        /* Web 1.0 Aesthetic Styling */
+        body {
+            background-color: #000080; /* Navy Blue background */
+            color: #FFFFFF; /* Bright White text */
+            font-family: 'Courier New', Courier, monospace; /* Classic monospace font */
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+
+        .container {
+            width: 80%;
+            max-width: 900px;
+            margin: 20px auto;
+            border: 8px outset #C0C0C0; /* 3D effect border */
+            padding: 15px;
+            background-color: #0000A0; /* Slightly lighter blue for the content area */
+        }
+
+        h1 {
+            color: #FFFF00; /* Bright Yellow/Gold for the main title (Cardinal colors) */
+            font-size: 2.5em;
+            margin: 5px 0 10px 0;
+            text-shadow: 2px 2px #800000; /* Simple text shadow */
+        }
+
+        h2 {
+            color: #FF6600; /* Orange/Red for subheadings */
+            font-size: 1.5em;
+            border-bottom: 2px solid #FF6600;
+            display: inline-block;
+            padding-bottom: 5px;
+        }
+
+        a {
+            color: #7FFF00; /* Electric Green links */
+            text-decoration: none;
+        }
+
+        a:hover {
+            color: #FF00FF; /* Neon Pink hover effect */
+            text-decoration: underline;
+        }
+
+        .navigation-table {
+            width: 100%;
+            margin-bottom: 20px;
+            border-collapse: collapse;
+        }
+
+        .navigation-table td {
+            background-color: #800000; /* Cardinal Red/Maroon */
+            padding: 8px;
+            border: 2px solid #C0C0C0;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.1s;
+        }
+
+        .navigation-table td:hover {
+            background-color: #A00000; /* Darker red on hover */
+            border-style: inset;
+        }
+
+        .page-content {
+            text-align: left;
+            padding: 15px;
+            border: 2px dashed #C0C0C0;
+            background-color: #000080;
+        }
+        
+        /* Web 1.0 Footers and Accessories */
+        .footer-banner {
+            margin-top: 20px;
+            font-size: 0.8em;
+            color: #C0C0C0;
+        }
+        
+        .counter-box {
+            border: 1px solid #FF00FF;
+            padding: 5px;
+            display: inline-block;
+            background-color: #000000;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+
+        <!-- Animated Banner Simulation -->
+        <center>
+            <h1 style="border: 3px double #FFFF00; padding: 10px; background-color: #A00000;">
+                <span style="animation: blink-effect 1s step-end infinite;">*</span>
+                CARDINAL BOOKS
+                <span style="animation: blink-effect 1s step-end infinite;">*</span>
+            </h1>
+            <p style="color: #C0C0C0; font-size: 1.2em;">Serving Ball State Students and Families Since 1996!</p>
+            <!-- Custom CSS for blinking text animation -->
+            <style>
+                @keyframes blink-effect {
+                    50% { opacity: 0; }
+                }
+            </style>
+        </center>
+        
+        <!-- Navigation Table (Main Menu) -->
+        <table class="navigation-table">
+            <tr>
+                <td onclick="renderPage('home')"><a href="javascript:void(0);">** HOME PAGE **</a></td>
+                <td onclick="renderPage('gallery')"><a href="javascript:void(0);">** GALLERY OF BOOKS **</a></td>
+                <td onclick="renderPage('contact')"><a href="javascript:void(0);">** CONTACT US / MAP **</a></td>
+                <td onclick="renderPage('links')"><a href="javascript:void(0);">** COOL LINKS **</a></td>
+            </tr>
+        </table>
+
+        <!-- Main Content Area -->
+        <div id="main-content" class="page-content">
+            <!-- Content will be rendered here by JavaScript -->
+        </div>
+
+        <!-- Classic Footer / Accessories -->
+        <div class="footer-banner">
+            <p>You Are Visitor Number:</p>
+            <div class="counter-box" id="visitor-counter">00001</div>
+            <p>Best viewed on Netscape Navigator 3.0 or better.<br>&copy; 1996 Cardinal Books, Muncie IN.</p>
+        </div>
+
+    </div>
+
+    <script>
+        // Simple client-side routing logic
+        let currentPage = 'home';
+        const contentArea = document.getElementById('main-content');
+        const counterElement = document.getElementById('visitor-counter');
+
+        // Simulated visitor counter (Web 1.0 staple)
+        let visitorCount = localStorage.getItem('cardinalBooksVisitorCount');
+        if (!visitorCount) {
+            visitorCount = 10001; // Starting high for that established business feel!
+        } else {
+            visitorCount = parseInt(visitorCount) + 1;
+        }
+        localStorage.setItem('cardinalBooksVisitorCount', visitorCount);
+        counterElement.textContent = String(visitorCount).padStart(5, '0');
+
+        function renderPage(pageName) {
+            currentPage = pageName;
+            contentArea.innerHTML = ''; // Clear existing content
+
+            let contentHTML = '';
+
+            // --- Home Page Content ---
+            if (pageName === 'home') {
+                contentHTML = `
+                    <center><h2>WELCOME TO CARDINAL BOOKS!</h2></center>
+                    <p>
+                        Greetings, fellow bookworms and Ball State Cardinals!
+                        Cardinal Books is your locally owned and family-operated source for required textbooks,
+                        leisure reading, and quirky gifts. We have been proudly serving the Muncie community
+                        and BSU students for nearly three decades. Stop by our cozy location right off campus!
+                    </p>
+                    
+                    <hr style="border-top: 1px solid #C0C0C0; margin: 20px 0;">
+
+                    <center><h2>OUR MISSION STATEMENT</h2></center>
+                    <p style="border: 3px inset #C0C0C0; padding: 15px; background-color: #000040;">
+                        Our mission is to foster a love of reading and critical thought within the Ball State community
+                        by providing affordable, curated, and diverse literary selections. We strive to be more than just a store;
+                        we are a friendly, quiet refuge for students and faculty alike, promoting education, community connection,
+                        and the simple joy of turning a new page.
+                    </p>
+                    
+                    <p>
+                        <center>
+                            <img src="https://placehold.co/400x50/00FF00/000000?text=!!!+NEW+ARRIVALS+-+CLICK+HERE+!!!" alt="New Arrivals Banner">
+                        </center>
+                    </p>
+                `;
+            } 
+            
+            // --- Gallery Page Content ---
+            else if (pageName === 'gallery') {
+                contentHTML = `
+                    <center><h2>A Peek Inside Our Shelves! (Gallery)</h2></center>
+                    <p>
+                        We offer a vast selection, from required reading to the best in fiction and non-fiction.
+                        Check out some of our best-selling sections below! (Note: Images may take a while to load on dial-up!)
+                    </p>
+                    
+                    <center>
+                        <!-- Using tables for a classic photo mosaic layout -->
+                        <table border="1" cellpadding="5" cellspacing="5" width="90%" style="border-color: #C0C0C0;">
+                            <tr>
+                                <td width="50%" align="center">
+                                    <img src="https://placehold.co/250x180/800000/FFFFFF?text=BSU+Textbooks" alt="Textbook Section">
+                                    <br><font size="-1">Required Reading Section</font>
+                                </td>
+                                <td width="50%" align="center">
+                                    <img src="https://placehold.co/250x180/008000/FFFFFF?text=Classic+Literature" alt="Literature Section">
+                                    <br><font size="-1">The Classics and World Lit</font>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td width="50%" align="center">
+                                    <img src="https://placehold.co/250x180/0000FF/FFFFFF?text=Sci-Fi+%26+Fantasy" alt="Sci-Fi Section">
+                                    <br><font size="-1">Science Fiction & Fantasy</font>
+                                </td>
+                                <td width="50%" align="center">
+                                    <img src="https://placehold.co/250x180/808000/FFFFFF?text=Coffee+%26+Snacks" alt="Snack Area">
+                                    <br><font size="-1">Our Cozy Coffee Nook</font>
+                                </td>
+                            </tr>
+                        </table>
+                    </center>
+                `;
+            } 
+            
+            // --- Contact Page Content ---
+            else if (pageName === 'contact') {
+                contentHTML = `
+                    <center><h2>Get in Touch with the Family!</h2></center>
+                    <p>
+                        We are located just a short walk from the main Ball State quad.
+                        Come on down and say hello!
+                    </p>
+                    
+                    <table border="0" cellpadding="5" cellspacing="5" style="width: 100%;">
+                        <tr>
+                            <td style="background-color: #000040; border: 1px dashed #C0C0C0;" width="50%">
+                                <strong>Our Location (Find Us!)</strong>
+                                <br>1812 N. Cardinal Avenue
+                                <br>Muncie, IN 47306
+                                <br><br>
+                                <font color="#FF6600">Hours of Operation:</font>
+                                <br>Mon-Sat: 9:00 AM - 7:00 PM EST
+                                <br>Sunday: CLOSED
+                            </td>
+                            <td style="background-color: #000040; border: 1px dashed #C0C0C0;" width="50%">
+                                <strong>Talk to a Human!</strong>
+                                <br>
+                                <p><strong>Phone:</strong> <a href="tel:5551234567">(555) BSU-BOOK</a></p>
+                                <p><strong>Email:</strong> <a href="mailto:contact@cardinalbooks.com">contact@cardinalbooks.com</a></p>
+                                <p><blink>** NOW HIRING STUDENT STAFF! **</blink></p>
+                            </td>
+                        </tr>
+                    </table>
+                    <center>
+                        <p style="margin-top: 15px;">
+                            <img src="https://placehold.co/400x150/C0C0C0/000000?text=MAP+OF+MUNCIE+HERE" alt="Map Placeholder">
+                        </p>
+                    </center>
+                `;
+            } 
+            
+            // --- Links Page Content ---
+            else if (pageName === 'links') {
+                contentHTML = `
+                    <center><h2>Cool Links and Partners!</h2></center>
+                    <p>
+                        We encourage you to visit our favorite websites and local partners.
+                        Tell 'em Cardinal Books sent you!
+                    </p>
+                    
+                    <ul style="list-style-type: square; color: #7FFF00; padding-left: 20px;">
+                        <li style="margin-bottom: 10px;">
+                            <a href="http://www.bsu.edu/" target="_blank">Ball State University Official Homepage (GO CARDS!)</a>
+                            <br><font size="-1" color="#C0C0C0">The best university in Indiana!</font>
+                        </li>
+                        <li style="margin-bottom: 10px;">
+                            <a href="http://www.munciepubliclibrary.org/" target="_blank">Muncie Public Library</a>
+                            <br><font size="-1" color="#C0C0C0">A great place for even more books!</font>
+                        </li>
+                        <li style="margin-bottom: 10px;">
+                            <a href="http://www.geocities.com/familybooks" target="_blank">The Family Bookseller Ring</a>
+                            <br><font size="-1" color="#C0C0C0">Part of the official bookstore web ring!</font>
+                        </li>
+                        <li style="margin-bottom: 10px;">
+                            <a href="javascript:void(0);">Guestbook / Wall of Fame</a>
+                            <br><font size="-1" color="#C0C0C0">Sign our guestbook to let us know you visited! (Under Construction)</font>
+                        </li>
+                    </ul>
+                    <center>
+                        <img src="https://placehold.co/88x31/800000/FFFFFF?text=BEST+VIEWED" alt="Best Viewed Badge" style="margin-right: 10px;">
+                        <img src="https://placehold.co/88x31/0000FF/FFFFFF?text=HTML+4.01" alt="HTML Badge">
+                    </center>
+                `;
+            }
+
+            contentArea.innerHTML = contentHTML;
+        }
+
+        // Render the initial page on load
+        renderPage(currentPage);
+    </script>
+
+</body>
+</html>
